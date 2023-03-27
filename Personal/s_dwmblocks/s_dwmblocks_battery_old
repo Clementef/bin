@@ -1,0 +1,11 @@
+/* old script, requires a battery package called upower */
+#!/bin/sh
+for bat in $(upower -e | grep battery); do
+	case "$(upower -i "$bat" | grep state | awk '{print $2}')" in
+		"charging")	status="⚡" ;;
+		*)		status=""  ;;
+	esac
+	percent="$(upower -i "$bat" | grep percentage | awk '{print $2}')"
+	[ "$status" = "" ] && [[ "${percent:0:2}" -le "25" ]] && warn="!"
+	printf " %s%s%s" "$status" "$warn" "$percent" 
+done && printf "\\n"

@@ -1,0 +1,4 @@
+#!/bin/sh
+network="$(nmcli dev status | grep "^wlo1" | awk '{print $4}')"
+[ "$network" = "" ] && network="X"
+printf "%s\\n" "${network:0:8}"

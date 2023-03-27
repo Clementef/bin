@@ -1,0 +1,2 @@
+#!/bin/sh
+rsync -a --delete --quiet /path/to/backup /location/of/backup

@@ -1,0 +1,5 @@
+#!/bin/bash
+if [ -n "$1" ]
+then
+	sudo brillo -q -S "$1"
+fi

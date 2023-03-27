@@ -1,0 +1,9 @@
+#!/bin/bash
+if ! [ -z "$1" ]
+then
+	var="$1"
+	gzip -d $var
+	tar -xf ${var%.*}
+	gzip ${var%.*}
+
+fi
