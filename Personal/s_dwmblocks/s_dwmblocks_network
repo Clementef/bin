@@ -1,4 +1,5 @@
 #!/bin/sh
-network="$(nmcli dev status | grep "^wlo1" | awk '{print $4}')"
+network="$(nmcli dev status | grep -e "wifi" -e "ethernet" | awk '{print $4}' | grep -v "-")"
 [ "$network" = "" ] && network="X"
+#echo "$network">"resources/networkinfo.txt"
 printf "%s\\n" "${network:0:8}"

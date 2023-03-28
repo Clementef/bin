@@ -1,2 +1,2 @@
 #!/bin/sh
-nmcli dev wifi list | awk '/\*/ {print "*"$3"\n "$6$7" | "$9" | "$10""} END {print "-"$2"\n "$5""$6"|"$8" | "$9""}'
+nmcli dev wifi list | awk '/\*/ {print "*"$3"\n "$6$7" | "$9" | "$10""} END {print "-"$2"\n"$5$6" | "$8" | "$9}'

@@ -1,0 +1,4 @@
+#!/bin/bash
+uinp="$(echo "" | dmenu -l 0 -p "Reload:" -sb "#282a36" -h 50)"
+eval "pkill $uinp ; $uinp &" > /dev/null 2>&1
+notify-send -u normal "Reloaded $uinp"
