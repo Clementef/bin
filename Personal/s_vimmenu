@@ -1,0 +1,9 @@
+#!/bin/sh
+optlist=""
+#compile directory list
+while IFS= read -r line; do
+    optlist="$(printf "%s\n%s" "${optlist}" "$(find $line -type d)")"
+done < "$RES/.vimdirs"
+uinp="$(echo "$optlist" | dmenu -i -l 5)"
+#open nvim to a blank file with nerdtree
+[ -n "$uinp" ] && st -e nvim -c ":NERDTree $uinp"
