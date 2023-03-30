@@ -1,0 +1,3 @@
+#!/bin/sh
+uinp="$(man -k . | dmenu -l 5 -p "Man:" | awk '{ print $1 }')"
+[ -n "$uinp" ] && [ "$(man -Tpdf "$uinp" | zathura -)" ]

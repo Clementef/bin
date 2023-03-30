@@ -1,2 +1,0 @@
-PDFS="$(find /home/clem/Documents | grep .pdf)"
-xdg-open "$($PDFS |  dmenu -p "Pdf:")"

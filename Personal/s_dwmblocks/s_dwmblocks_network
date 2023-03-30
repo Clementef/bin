@@ -1,5 +1,6 @@
 #!/bin/sh
+[ "$USENETWORK" = 0 ] && ( echo "_\\n")
 network="$(nmcli -t -f NAME c show --active | grep -v "lo")"
 [ "$network" = "" ] && network="X"
-#echo "$network">"resources/networkinfo.txt"
+#echo "$network">"resources/neworkinfo.txt"
 printf "%s\\n" "${network:0:8}"
