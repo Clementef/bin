@@ -7,7 +7,7 @@ static int centered = 1;                    /* -c option; centers dmenu on scree
 static int min_width = 300;                    /* minimum width when centered */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"Fira Code:size=15"
+	"Fira Code:size=18"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][3] = {

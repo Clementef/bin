@@ -28,8 +28,11 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	//{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	//{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+    // class    inst    title   tag mask    floating    floating w,h
+    { "Thunar",  NULL,   NULL,   0,  0,      -1, 0, 0,   480, 750},
+    //{ "Brave",  NULL,   NULL,   0,  0,      -1, 0, 0,   480, 750},
 };
 
 /* layout(s) */
@@ -84,6 +87,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+    { MODKEY,		                XK_t,      togglefloating, {0} },
 	TAGKEYS(                        XK_a,                      0)
 	TAGKEYS(                        XK_s,                      1)
 	TAGKEYS(                        XK_d,                      2)
