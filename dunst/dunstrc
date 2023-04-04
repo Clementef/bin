@@ -45,7 +45,7 @@
 
     # Turn on the progess bar. It appears when a progress hint is passed with
     # for example dunstify -h int:value:12
-    progress_bar = false
+    progress_bar = true
 
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
@@ -73,7 +73,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 0
+    transparency = 90
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
