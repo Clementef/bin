@@ -6,4 +6,4 @@ while IFS= read -r line; do
 done < "$RES/.vimdirs"
 uinp="$(echo "$optlist" | dmenu -p "Vifm:" -i -l 5)"
 #open nvim to a blank file with nerdtree
-[ -n "$uinp" ] && st -e vifmrun "$uinp"
+[ -n "$uinp" ] && st -e vifm "$uinp"

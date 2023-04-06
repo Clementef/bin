@@ -1,4 +1,8 @@
 #!/bin/sh
-cp ~/.bashrc ~/.config/bash/.bashrc
-cp ~/.xinitrc ~/.config/X11/.xinitrc
-cp -r ~/.vifm ~/.config
+uinp="$(printf "none\npush\npull" | dmenu -i -p "Action:")"
+case $uinp in
+	"none")	exit 0	;;
+	"push") cp ~/.bashrc ~/.config/bash/.bashrc ; cp ~/.xinitrc ~/.config/X11/.xinitrc ; cp -r ~/.vifm ~/.config	;;
+	"pull") cp ~/.config/bash/.bashrc ~/.bashrc ; cp ~/.config/X11/.xinitrc ~/.xinitrc ; cp -r ~/.config/.vifm ~	;;
+	*)	exit 1	;;
+esac
