@@ -4,6 +4,7 @@ optlist=""
 while IFS= read -r line; do
     optlist="$(printf "%s\n%s" "${optlist}" "$(find "$line" -type f | grep "/*.pdf")")"
 done < "$RES/.pdfdirs"
-uinp="$(echo "$optlist" | dmenu -p "Pdf:" -i -l 5)"
+uinp="$(echo "$optlist" | dmenu -i -p "Pdf:")"
+
 #open pdf with zathura
 [ -n "$uinp" ] && zathura "$uinp"

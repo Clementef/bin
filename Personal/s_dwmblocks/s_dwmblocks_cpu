@@ -1,0 +1,3 @@
+#!/bin/sh
+cpu="$(bc <<< "100-$(mpstat | awk 'NR==4 { print $12 }')")"
+printf "%s%s CPU\\n" "$cpu" "%"

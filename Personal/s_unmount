@@ -1,0 +1,2 @@
+#!/bin/sh
+udiskie-umount --detach "$1"
