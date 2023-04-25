@@ -30,8 +30,9 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	//{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	//{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-    // class    inst    title   tag mask    floating    floating w,h
-    { "Thunar",  NULL,   NULL,   0,  0,      -1, 0, 0,   480, 750},
+    // class    inst    title   tag mask    floating    monitor floating x,y,w,h    floatborderpx
+    { "Pcmanfm",  NULL,   NULL,   0,  0,      1,        -1,      0, 0, 950, 587,    -1},
+    { "Nextcloud",  NULL,   NULL,   0,  0,      1,        -1,      0, 0, 389, 630,    -1},
     //{ "Brave",  NULL,   NULL,   0,  0,      -1, 0, 0,   480, 750},
 };
 

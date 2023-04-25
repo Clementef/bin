@@ -1,2 +1,2 @@
 #!/bin/sh
-udiskie-umount --detach "$1"
+udiskie-umount --detach "/dev/$1"
