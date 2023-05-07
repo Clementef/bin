@@ -1,5 +1,5 @@
 #!/bin/sh
-options="logout\nsleep\nrestart\nshutdown"
+options="\nlogout\nsleep\nrestart\nshutdown"
 uinp="$(echo -e $options | dmenu -p "Power:")"
 case $uinp in
 	"logout") s_logout ;;

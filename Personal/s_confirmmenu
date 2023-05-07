@@ -1,6 +1,6 @@
 #!/bin/sh
-uinp="$(printf "yes\nno" | dmenu -i -p "Confirm $1:")"
+uinp="$(printf "no\nyes" | dmenu -i -p "$1:")"
 case $uinp in
-	"yes")	[ -n $2 ] && $2	;;
+    "yes")	[ -n "$2" ] && eval "$2" ;;
 	*)	exit 1	;;
 esac

@@ -1,0 +1,10 @@
+#!/bin/sh
+optlist=""
+#compile directory list
+while IFS= read -r line; do
+    optlist="$(printf "%s\n%s" "${optlist}" "$line")"
+done < "$RES/.displayoptions"
+uinp="$(printf "%s" "$optlist" | dmenu -p "Display:" -i -l 5)"
+# use as xrandr command
+
+[ -n "$uinp" ] && notify-send "Display Mode:" "$uinp" && eval "$uinp"

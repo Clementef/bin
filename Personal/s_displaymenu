@@ -1,9 +1,8 @@
 #!/bin/sh
-optlist=""
-#compile directory list
-while IFS= read -r line; do
-    optlist="$(printf "%s\n%s" "${optlist}" "$line")"
-done < "$RES/.displayoptions"
-uinp="$(printf "%s" "$optlist" | dmenu -p "Display:" -i -l 5)"
-# use as xrandr command
-[ -n "$uinp" ] && notify-send "Display Mode:" "$uinp" && eval "$uinp"
+displays="$( xrandr | grep " connected " | awk '{ print $1 }' )"
+maindisplay="$( echo "$displays" | head -1 | tail -1 )"
+extdisplay="$( echo "$displays" | head -2 | tail -1 )"
+uinp="$( printf "%s\n%s" "$maindisplay" "$extdisplay" | dmenu -i -p "Display:" )"
+otherdisp="$( echo "$displays" | grep -v "$uinp" )"
+printf "%s\n%s" "$uinp" "$otherdisp"
+xrandr --output "$uinp" --mode 1920x1080 --output "$otherdisp" --off

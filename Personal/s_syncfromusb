@@ -1,0 +1,2 @@
+#!/bin/sh
+rsync -uvrP $1 ~/Cloud/
