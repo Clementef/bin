@@ -3,7 +3,7 @@ static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 	{"", "s_dwmblocks_battery", 1, 0}, 
 	{"", "s_dwmblocks_network", 1, 0},
-	{"", "s_dwmblocks_cpu", 1, 0},
+	{"", "s_dwmblocks_cpu", 2, 0}, // CPU script has ~1s run time
 	{"", "s_dwmblocks_ram", 1, 0},
 	{"", "s_dwmblocks_date", 1, 0},
 };

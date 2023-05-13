@@ -6,4 +6,4 @@ while IFS= read -r line; do
 done < "$RES/.mountdirs"
 uinp="$(echo "$optlist" | dmenu -i -p "Drive:")"
 #open nvim to a blank file with nerdtree
-[ -n "$uinp" ] && rsync -uvrP ~/Cloud/ "$uinp"
+[ -n "$uinp" ] && rsync -uvrP --delete-after --exclude=".*" ~/Cloud/ "$uinp"
