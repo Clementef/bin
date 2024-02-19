@@ -1,3 +1,0 @@
-#!/bin/sh
-uinp="$( awk '{ print $1 }' Resources/.displayoptions | dmenu -l 5 -p "Display:")"
-[ -n "$uinp" ] && eval "$( grep "$uinp\s" Resources/.displayoptions | awk '{$1=""; print $0}' )" && notify-send "Display:" "$uinp"

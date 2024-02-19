@@ -1,3 +1,0 @@
-#!/bin/sh
-date="$(date '+%a %b %d | %I:%M %p')"
-printf "%s \\n" "$date"

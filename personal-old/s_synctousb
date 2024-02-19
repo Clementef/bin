@@ -1,9 +1,0 @@
-#!/bin/sh
-optlist=""
-#compile directory list
-while IFS= read -r line; do
-    optlist="$(printf "%s\n%s" "${optlist}" "$(find $line -type d)")"
-done < "$RES/.mountdirs"
-uinp="$(echo "$optlist" | dmenu -i -p "Drive:")"
-#open nvim to a blank file with nerdtree
-[ -n "$uinp" ] && rsync -uvrP --delete-after --exclude=".*" ~/Cloud/ "$uinp"

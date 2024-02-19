@@ -1,5 +1,0 @@
-#!/bin/bash
-if [ -n "$1" ]
-then
-    brillo -q -S "$1"
-fi

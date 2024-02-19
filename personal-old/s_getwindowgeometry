@@ -1,2 +1,0 @@
-#!/bin/sh
-xwininfo | grep -e "Window id" -e "geometry"

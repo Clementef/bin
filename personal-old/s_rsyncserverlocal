@@ -1,3 +1,0 @@
-#!/bin/sh
-
-rsync -e "ssh -i ~/.ssh/biggem_w530" -uvrP --delete-after "$1" clem@192.168.1.207:"$2"

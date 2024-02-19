@@ -1,5 +1,0 @@
-#!/bin/sh
-displays="$( xrandr | grep " connected " | awk '{ print $1 }' )"
-maindisplay="$( echo "$displays" | head -1 | tail -1 )"
-extdisplay="$( echo "$displays" | head -2 | tail -1 )"
-xrandr --output "$maindisplay" --mode 1920x1080 --output "$extdisplay" --off
