@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 <delay> <command>"
+    exit 1
+fi
+
+while true; do
+    eval "$2"
+    sleep "$1"
+done
+

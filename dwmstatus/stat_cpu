@@ -1,0 +1,7 @@
+#!/bin/bash
+cpu_total=$(top -b -n1 | grep '%Cpu' | awk '{print $2+$4}')
+cpu_temps=$(sensors | awk '/^Core */{print $3}' | tr -d '+C°' | tr '\n' ' ')
+max_temp=$(echo "$cpu_temps" | awk '{if ($1 > $2) print $1; else print $2}')
+
+printf  '  %04.1f%%  %s%s' "$cpu_total" "$max_temp" "°"
+

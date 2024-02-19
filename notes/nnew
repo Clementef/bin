@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 name"
+  exit 1
+fi
+
+rpath="$HOME/documents/notes"
+new_path="$rpath/$1.md"
+nvim "$new_path"

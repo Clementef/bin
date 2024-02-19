@@ -1,0 +1,9 @@
+#!/bin/bash
+
+config="$HOME/.config/dwmstatus/config.txt"
+
+# dmenu
+uinp=$(echo -e "\nless\nsystem\nnetwork" | dmenu -i -p "Status:")
+
+# write to config (first line)
+[ -n "$uinp" ] && sed -i "1s/.*/$uinp/" "$config"

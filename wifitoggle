@@ -1,0 +1,16 @@
+#!/bin/bash
+wifi_status=$(nmcli radio wifi)
+case $wifi_status in
+	"enabled")
+		nmcli radio wifi off;
+		notify-send -r "1010" -u low "wifi off"
+		;;
+	"disabled")
+		nmcli radio wifi on;
+		notify-send -r "1010" -u low "wifi on"
+		;;
+	*)
+		notify-send -r "1010" -u low "wifi state unknown"
+		;;
+	esac
+

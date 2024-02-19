@@ -1,0 +1,11 @@
+#!/bin/bash
+
+connection_icon="󰈂" 
+if [ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ] ; then
+	# ethernet
+	connection_icon="󰈀"
+elif [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ] ; then
+	# wifi
+	connection_icon="󰖩"
+fi
+printf "%s\n" "$connection_icon"

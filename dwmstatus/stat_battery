@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# system files
+current_charge="/sys/class/power_supply/BAT0/charge_now"
+max_charge="/sys/class/power_supply/BAT0/charge_full"
+charge_status="/sys/class/power_supply/BAT0/status"
+
+# percent charge
+decimal_charge=$(awk 'NR==FNR{a=$1;next}{print $1/a}' "$max_charge" "$current_charge")
+percent_charge=$(printf "%.0f" $(echo "$decimal_charge * 100" | bc))
+
+# charging status
+charging_status=$(< $charge_status)
+case "$charging_status" in
+	"Charging")
+		charging_status="󱐋"
+		;;
+	"Discharging")
+		charging_status=""
+		;;
+	"Full")
+		charging_status="󰁹"
+		;;
+	*)
+		charging_status="󰂑"
+		;;
+esac
+
+echo "$charging_status $percent_charge%"

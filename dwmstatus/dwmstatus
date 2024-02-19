@@ -1,0 +1,23 @@
+#!/bin/bash
+
+config="$HOME/.config/dwmstatus/config.txt"
+
+while true; do
+	mode=$(head -1 $config)
+	case $mode in
+	    "less")
+		xsetroot -name " | $(stat_network) | $(stat_battery) | $(stat_datetime) | "
+		;;
+	    "system")
+		xsetroot -name " | $(stat_cpu) | $(stat_memory) | $(stat_network) | $(stat_battery) | $(stat_datetime) | "
+		;;
+	    "network")
+		xsetroot -name " | $(stat_traffic) | $(stat_network) | $(stat_battery) | $(stat_datetime) | "
+		;;
+	    *)
+		xsetroot -name "error: mode not found"
+		;;
+	esac
+
+	sleep 1
+done

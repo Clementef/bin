@@ -1,0 +1,15 @@
+#!/bin/bash
+case $1 in
+	"off")
+		nmcli radio wifi off;
+		notify-send -r "1010" -u low "wifi off"
+		;;
+	"on")
+		nmcli radio wifi on;
+		notify-send -r "1010" -u low "wifi on"
+		;;
+	*)
+		notify-send -r "1010" -u low "wifi state unknown"
+		;;
+	esac
+

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -z "$1" ] && [ -z "$2" ]; then
+  echo "Usage: $0 file type"
+  exit 1
+fi
+
+Rscript -e "rmarkdown::render('$1', output_format='$2')"

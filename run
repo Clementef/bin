@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# check if argument passed
+if [ -z "$1" ]; then
+    echo "Usage: $0 <filename>"
+    exit 1
+fi
+
+# Check if the file exists
+if [ ! -f "$1" ]; then
+    echo "File not found: $filename"
+    exit 1
+fi
+
+# extract file name and extension
+file="$1"
+extension="${file##*.}"
+filename="${file%.*}"
+
+# no extension, check if bash script
+if [ -z "$extension" ]; then
+    if head -n 1 "$file" | grep -q '^#!/bin/bash'; then
+        printf "Running as Bash Script\n\n"
+        bash "$file"  # Execute the bash script
+    else
+        printf "Unknown file type\n"
+    fi
+    exit 0
+fi
+
+# run based on extension
+case "$extension" in
+	"py")
+		printf "Running as Python\n\n";
+		python3 "$file"
+		;;
+
+	"c")
+		printf "Running as C\n\n";
+		gcc -o "$filename" "$file";
+		./"$filename"
+		;;
+
+	"r"|"R")
+		printf "Running as R\n\n";
+		Rscript "$file"
+		;;
+
+	*)
+		# check if bash script
+		if head -n 1 "$filename" | grep -q '^#!/bin/bash'; then
+			printf "Running as Bash\n\n"
+			bash "$filename"  # Execute the bash script
+		else
+			printf "Unknown file type\n"
+			exit 0
+		fi
+		;;
+    
+esac

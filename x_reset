@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# keyboard repeat delay and rate
+xset r rate 250 40
+xset m 4 4
