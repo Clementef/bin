@@ -21,8 +21,8 @@ if [ -z "$width" ] || [ -z "$height" ]; then
     exit 1
 fi
 
-x=$((fontw * x + fontw * cols / 2))
-y=$((fonth * y + fonth * 2))
+x=$((fontw * x))
+y=$((fonth * y))
 max_width=$((fontw * cols))
 max_height=$((fonth * lines))
 

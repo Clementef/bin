@@ -1,5 +1,5 @@
 #!/bin/bash
-options="\nlogout\nsleep\nreboot\npower off\nrestart\nshutdown\nlock\nwifi toggle\nwifi off\nwifi on"
+options="\nlogout\nsleep\nreboot\npower off\nlock\nrestart\nshutdown"
 uinp="$(echo -e "$options" | dmenu -p "Power:")"
 case $uinp in
 	"logout") user_logout ;;
@@ -9,8 +9,5 @@ case $uinp in
 	"shutdown") shutdown -h now ;;
 	"power off") shutdown -h now ;;
 	"lock") xscreensaver-command -lock ;;
-	"wifi toggle") wifitoggle ;;
-	"wifi off") wifiset off;;
-	"wifi on") wifiset on;;
 	*) exit 0 ;; 
 esac

@@ -2,14 +2,9 @@
 
 # generate list
 optlist=$(cat "$HOME/.config/systemmenu/config.txt")
-display=$(awk '{print $1}' <<< "$optlist") # display list
 
 # dmenu
-uinp=$(echo -e "\n$display" | dmenu -i -p "System:")
-
-# optlist lookup
-selected_command=$(awk -v value="$uinp" '$1 == value {print $2;exit}' <<< "$optlist")
-
+uinp=$(echo -e "\n$optlist" | dmenu -i -d "," -p "System:")
 
 # open in nvim
-[ -n "$uinp" ] && eval "$selected_command"
+[ -n "$uinp" ] && eval "$uinp"

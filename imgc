@@ -9,8 +9,8 @@ Y=$2
 COLUMNS=$3
 LINES=$4
 
-x=$((FONTW * x + FONTW * cols / 2))
-y=$((FONTH * y + FONTH * 2))
+x=$((FONTW * x))
+y=$((FONTH * y))
 
 erase="6;$x;$y;$(( FONTW*COLUMNS ));$(( FONTH*LINES ))\n3;"
 echo -e "$erase" | $W3MIMGDISPLAY
