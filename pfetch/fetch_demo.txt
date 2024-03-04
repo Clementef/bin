@@ -1,0 +1,9 @@
+[?7l[Cclem@silver
+[CosArch Linux
+[ChostMacBookPro9,2 1.0
+[Ckernel6.7.4-arch1-1
+[Cmemory1367M / 7851M
+[Cpkgs1105
+[Cshellbash
+[Cuptime53m
+[?7h

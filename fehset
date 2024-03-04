@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -z "$1" ]; then
+    echo "No argument provided."
+else
+    feh --bg-scale "$1"
+fi

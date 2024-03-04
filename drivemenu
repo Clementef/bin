@@ -1,0 +1,8 @@
+#!/bin/sh
+mount_dir="/run/media/$(whoami)"
+opts=$(ls "$mount_dir")
+userin=$(echo -e "\n$opts" | dmenu -i -p "Drives:")
+target_dir="$mount_dir/$userin"
+[ -n "$userin" ] \
+	&& notify-send "opening $userin" \
+	&& st -e sh -c "vifm '$target_dir'; exec bash"
