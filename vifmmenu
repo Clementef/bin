@@ -1,0 +1,24 @@
+#!/bin/sh
+search_dir="$HOME/documents"
+
+while true; do
+	opts=$(find "$search_dir" -mindepth 1 -maxdepth 1 -type d)
+	opttable=$(echo -e "open\n$opts" | awk -F"/" '{print $NF "," $0}')
+	uinp=$(echo "$opttable" | dmenu -i -d "," -p "Vifm:")
+	if [ -z "$uinp" ]; then
+		# user presses escape in dmenu
+		exit
+	elif [ "$uinp" = "open" ]; then
+		# select current search_dir
+		break
+	else
+		# user selected a subdir
+		search_dir="$uinp"
+	fi
+done
+
+# there is a user selection
+[ -n "$uinp" ] && \
+	st -e sh -c "vifm '$search_dir'; exec bash"
+
+

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Check if no package names are provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <package_name1> [<package_name2> ...]"
+    exit 1
+fi
+
+# Loop through each package name provided
+for pkg in "$@"; do
+    # Get package information and filter the line containing the installed size
+    size_info=$(pacman -Qi "$pkg" | grep "Installed Size")
+
+    # Extract the size from the line
+    size=$(echo "$size_info" | awk '{print $4, $5}')
+
+    # Print the package name and its size
+    echo "$pkg: $size"
+done
+
