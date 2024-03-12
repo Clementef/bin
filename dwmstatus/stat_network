@@ -1,11 +1,14 @@
 #!/bin/bash
 
 connection_icon="󰈂" 
-if [ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ] ; then
+if [ "$(nordvpn status | grep "Status" | awk -F ': ' '{print $2}')" = 'Connected' ] ; then
+	# nordvpn
+	connection_icon="󱚿" # locked wifi icon
+elif [ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ] ; then
 	# ethernet
-	connection_icon="󰈀"
+	connection_icon="󰈀" # wired icon
 elif [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ] ; then
 	# wifi
-	connection_icon="󰖩"
+	connection_icon="󰖩" # unlocked wifi icon
 fi
 printf "%s\n" "$connection_icon"

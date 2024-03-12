@@ -1,0 +1,4 @@
+#!/bin/sh
+message="printf 'Taking System Snapshot\n'"
+st -e sh -c "$message;sudo snapshot;exec bash"
+
