@@ -1,0 +1,24 @@
+#!/bin/sh
+opts="\nconnect\ndisconnect\nstatus\nenable killswitch\ndisable killswitch"
+uinp=$(echo -e "$opts" | dmenu -i -p "Vpn:")
+case $uinp in
+	"connect")
+		ucmd="connect"
+		;;
+	"disconnect")
+		ucmd="disconnect"
+		;;
+	"status")
+		ucmd="status"
+		;;
+	"enable killswitch")
+		ucmd="set killswitch enabled"
+		;;
+	"disable killswitch")
+		ucmd="set killswitch disabled"
+		;;
+	*)
+		exit 0
+		;;
+esac
+notify-send "$(nordvpn $ucmd | grep -v '[/-]')"

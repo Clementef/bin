@@ -1,8 +1,7 @@
 #!/bin/sh
-mount_dir="/run/media/$(whoami)"
-opts=$(ls "$mount_dir")
-userin=$(echo -e "\n$opts" | dmenu -i -p "Drives:")
-target_dir="$mount_dir/$userin"
+opts=$(find /mnt/ /run/media/$(whoami)/ -maxdepth 1 -mindepth 1)
+opttable=$(echo "$opts" | awk -F"/" '{print $NF "," $0}')
+userin=$(echo -e "\n$opttable" | dmenu -i -d "," -p "Drives:")
 [ -n "$userin" ] \
 	&& notify-send "opening $userin" \
-	&& st -e sh -c "vifm '$target_dir'; exec bash"
+	&& st -e sh -c "vifm '$userin'; exec bash"

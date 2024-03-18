@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# Initialize variables
+flag=0
+flag_char="e"
+first_arg=""
+
+# Function to print usage message
+print_usage() {
+	echo "Usage: $0 [-$flag_char] [command]"
+	echo "Options:"
+	echo "  -$flag_char        Enable the flag"
+	echo "  argument  Optional first argument"
+}
+
+# Parse command line options
+while getopts ":$flag_char" opt; do
+	case $opt in
+		$flag_char)
+			flag=1
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG"
+			print_usage
+			exit 1
+			;;
+	esac
+done
+shift $((OPTIND - 1))
+
+# Check if a first argument is provided
+if [ -z "$1" ]; then
+	echo "Missing command argument"
+	print_usage
+	exit 1
+fi
+
+# run command
+if [ $flag -eq 1 ]; then
+	st -e sh -c "$1; exec bash"
+else
+	st -e sh -c "$1"
+fi
+
