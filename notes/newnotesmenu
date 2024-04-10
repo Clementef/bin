@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# dmenu
+uinp=$(echo "" | dmenu -l 0 -i -p "New Note:")
+
+# clean input string
+lower_string=$(echo "$uinp" | tr '[:upper:]' '[:lower:]')
+# remove non-alpha characters,
+# replace space and dash with underscore
+# remove duplicate underscores
+clean_filename=$(echo "$lower_string" | sed -e 's/[^a-zA-Z1-9 _-]//g' -e 's/[ -]/_/g' -e 's/_\+/_/g')
+formatted_date=$(date +'%Y-%m-%d')
+note_filename="${clean_filename}_${formatted_date}"
+
+# open in nvim
+#[ -n "$uinp" ] \
+	&& notify-send "creating $note_filename" \
+	&& st -e sh -c "nnew '$uinp'"

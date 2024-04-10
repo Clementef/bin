@@ -2,10 +2,16 @@
 
 # generate list
 optlist=$(find "$HOME/documents/notes/" -type f | grep ".md$")
-opttable=$(echo "$optlist" | awk -F"/" '{print $NF "," $0}')
+opttable=$(echo -e  "\n*new note\n$optlist" | awk -F"/" '{print $NF "," $0}')
 
 # dmenu
 uinp=$(echo "$opttable" | dmenu -i -d "," -p "Notes:")
+
+# new note
+if [ "$uinp" = "*new note" ]; then
+	newnotesmenu
+	exit 0
+fi
 
 # open in nvim
 [ -n "$uinp" ] \
