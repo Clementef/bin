@@ -1,18 +1,49 @@
 #!/bin/bash
 
 # dmenu
-uinp=$(echo "" | dmenu -l 0 -i -p "New Note:")
+uinp=$(echo "" |\
+    dmenu -l 0 -h 50 -p "New Note:" -sb "#282a36")
 
 # clean input string
 lower_string=$(echo "$uinp" | tr '[:upper:]' '[:lower:]')
 # remove non-alpha characters,
 # replace space and dash with underscore
 # remove duplicate underscores
-clean_filename=$(echo "$lower_string" | sed -e 's/[^a-zA-Z1-9 _-]//g' -e 's/[ -]/_/g' -e 's/_\+/_/g')
+clean_filename=$(echo "$lower_string" |\
+    sed -e 's/[^a-zA-Z1-9 _-]//g'\
+    -e 's/[ -]/_/g' -e 's/_\+/_/g')
 formatted_date=$(date +'%Y-%m-%d')
 note_filename="${clean_filename}_${formatted_date}"
 
+# note path
+notes_path="$HOME/documents/notes"
+new_path="$notes_path/$note_filename.md"
+
+# open note if already exists
+optlist=$(find "$HOME/documents/notes/" -type f | grep ".md$")
+
+# check if note already exists
+found=false
+while IFS= read -r line; do
+    if [ "$line" = "$new_path" ]; then
+        found=true
+        break 
+    fi
+done <<< "$optlist"
+
+# open existing note if found
+if $found; then
+    notify-send -u "low" "$note_filename.md already exists, opening" \
+    && st_init "nvim $new_path" \
+    && exit 1
+fi
+
+# note contents
+title_date=$(date +'%b %d, %Y')
+note_contents="# $uinp\n# $title_date\n"
+
 # open in nvim
-#[ -n "$uinp" ] \
-	&& notify-send "creating $note_filename" \
-	&& st -e sh -c "nnew '$uinp'"
+[ -n "$uinp" ] \
+    && notify-send -u "low" "creating $note_filename.md" \
+    && echo -e "$note_contents" > "$new_path" \
+    && st_init "nvim $new_path"

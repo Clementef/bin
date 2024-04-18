@@ -13,7 +13,10 @@ if [ "$uinp" = "*new note" ]; then
 	exit 0
 fi
 
+# file basename
+note_name=$(basename "$uinp")
+
 # open in nvim
 [ -n "$uinp" ] \
-	&& notify-send "opening $uinp" \
-	&& st -e sh -c "nvim '$uinp'"
+	&& notify-send -u low "opening $note_name" \
+	&& st_init -e "nvim '$uinp'"
