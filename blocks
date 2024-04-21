@@ -1,1 +1,2 @@
-notify-send -u "normal" -r "1006" "$(lsblk)"
+#!/bin/sh
+lsblk

@@ -1,0 +1,4 @@
+#!/bin/bash
+profiles_dir="$HOME/.mozilla/firefox"
+most_recent_profile=$(ls -td "$profiles_dir"/*/ | head -n 1)
+echo "$most_recent_profile"

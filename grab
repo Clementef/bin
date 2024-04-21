@@ -1,3 +1,0 @@
-#!/bin/sh
-target="$HOME/git/software/"
-cp -ra "$HOME/bin/" "$target" && echo "personal programs copied"
