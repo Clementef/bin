@@ -1,2 +1,2 @@
 #!/bin/sh
-find /usr/local/bin/personal/colorscripts/ -maxdepth 1 -type f | shuf -n 1 | sh
+find . -maxdepth 1 -type f | shuf -n 1 | sh
