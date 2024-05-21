@@ -1,0 +1,8 @@
+#!/bin/bash
+search_dir="$HOME/documents/roms/gb/pokemon blue"
+opts=$(find "$search_dir" -type f -name "*.gb")
+# echo "$paths_list"
+opttable=$(echo "$opts" | awk -F"/" '{print $NF "," $0}')
+# echo "$opttable"
+userin=$(echo -e "\n$opttable" | dmenu -i -d "," -p "ROMs:")
+echo "$userin"
