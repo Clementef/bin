@@ -1,2 +1,2 @@
 #!/bin/sh
-df -h | grep /dev/sda3 | awk '{print $5, "Full,", $3, "/", $4}'
+df -h | grep -e "\s/$" | awk '{print $4"/"$2}'

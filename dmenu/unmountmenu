@@ -1,8 +1,8 @@
 #!/bin/sh
-mount_dir="/run/media/$(whoami)"
-opts=$(ls "$mount_dir")
-userin=$(echo -e "\n$opts" | dmenu -i -p "Unmount:")
-target_dir="$mount_dir/$userin"
+
+opts=$(find /mnt/ /run/media/$(whoami)/ -maxdepth 1 -mindepth 1)
+opttable=$(echo "$opts" | awk -F"/" '{print $NF "," $0}')
+userin=$(echo -e "\n$opttable" | dmenu -i -d "," -p "Unmount:")
 [ -n "$userin" ] \
 	&& notify-send "unmounting $userin" \
-	&& udiskie-umount --detach "$target_dir"
+	&& udiskie-umount --detach "$userin"

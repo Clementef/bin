@@ -1,2 +1,2 @@
 #!/bin/bash
-tar -xzvf "$1"
+tar -xvf "$1"

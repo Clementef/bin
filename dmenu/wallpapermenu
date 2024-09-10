@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # generate list
-optlist=$(find "$HOME/documents/pictures/wallpaper/" -type f)
+optlist=$(find "$HOME/documents/media/wallpaper/" -type f)
 opttable=$(echo "$optlist" | awk -F"/" '{print $NF "," $0}')
 
 # dmenu

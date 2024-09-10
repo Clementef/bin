@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# generate list
+optlist=$(cat "$HOME/.config/emumenu/config.txt")
+
+# dmenu
+uinp=$(echo -e "\n$optlist" | dmenu -i -d "," -p "Emulate:")
+
+# open in nvim
+[ -n "$uinp" ] && eval "$uinp"

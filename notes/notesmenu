@@ -19,4 +19,4 @@ note_name=$(basename "$uinp")
 # open in nvim
 [ -n "$uinp" ] \
 	&& notify-send -u low "opening $note_name" \
-	&& st_init -e "nvim '$uinp'"
+	&& st_init "nvim '$uinp'"

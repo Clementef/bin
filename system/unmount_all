@@ -1,0 +1,5 @@
+#!/bin/sh
+mount_dir="/run/media/$(whoami)"
+opts=$(find $mount_dir -maxdepth 1 -mindepth 1)
+notify-send "unmounting all external drives" \
+    && udiskie-umount --detach -a

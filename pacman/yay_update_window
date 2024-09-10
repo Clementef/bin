@@ -1,0 +1,2 @@
+#!/bin/sh
+st_init -e "echo 'Running yay update' && yay_update"

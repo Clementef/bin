@@ -1,5 +1,5 @@
 #!/bin/bash
-man_select=$(apropos . | awk '{print $1}')
+man_select=$(man -k . | awk '{print $1}')
 menu_select=$(echo -e "\n$man_select" | dmenu -i -p "Man:")
 if [ -n "$menu_select" ]; then
     notify-send -u low "generating pdf: $menu_select"

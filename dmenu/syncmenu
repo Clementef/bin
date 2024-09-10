@@ -4,4 +4,3 @@ uinp=$(echo -e "$opts" | dmenu -i -p "Sync:")
 [ -n "$uinp" ] && \
 	notify-send "syncing $uinp" && \
 	st -e sh -c "unison -auto '$uinp'; exec bash"
-	

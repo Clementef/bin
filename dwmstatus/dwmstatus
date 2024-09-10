@@ -11,6 +11,9 @@ while true; do
 	    "system")
 		xsetroot -name " | $(stat_cpu) | $(stat_memory) | $(stat_network) | $(stat_battery) | $(stat_datetime) | "
 		;;
+	    "system + fan")
+        xsetroot -name " | $(stat_fan) | $(stat_cpu) | $(stat_memory) | $(stat_network) | $(stat_battery) | $(stat_datetime) | "
+		;;
 	    "network")
 		xsetroot -name " | $(stat_traffic) | $(stat_network) | $(stat_battery) | $(stat_datetime) | "
 		;;

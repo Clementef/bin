@@ -1,0 +1,2 @@
+#!/bin/sh
+st_init -e "echo 'Running pacman full system update' && sudo pacman_update && echo 'Running yay full update' && yay_update"

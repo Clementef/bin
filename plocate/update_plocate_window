@@ -1,0 +1,2 @@
+#!/bin/sh
+st_init -e "echo 'Updating plocate database' && update_plocate"
