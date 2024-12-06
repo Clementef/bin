@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Check if an argument is provided
+if [ -n "$1" ]; then
+    # Use the provided argument as the path
+    selected_path="$1"
+else
+    # Use the current directory if no argument is provided
+    selected_path="$(pwd)"
+fi
+
+# Run nsxiv with -b (browse) and -a (auto start slideshow) options
+nsxiv -b -a "$selected_path"
+
+# aliases
+# alias py='python'
+# alias pym='python -m'
+# alias imgs='nsxiv -b -a *'

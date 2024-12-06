@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # battery state
-acpi_data=$(acpi -b | awk '/Battery 0/')
-percent_charge=$(echo "$acpi_data" | awk '{print $4}')
+# acpi_data=$(acpi -b | awk '/Battery 0/')
+acpi_data=$(acpi -b)
+percent_charge=$(echo "$acpi_data" | awk '{print $4}' | sed 's/.$//')
 charging_status=$(echo "$acpi_data" | awk '{print $3}' | sed 's/.$//')
 
 # charging state icons
