@@ -1,0 +1,1 @@
+sudo reflector --sort rate --save /etc/pacman.d/mirrorlist -c "United States" -f 5 -l 5

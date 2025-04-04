@@ -1,8 +1,8 @@
 #!/bin/bash
 
 connection_icon="󰈂" 
-if [ "$(nordvpn status | grep "Status" | awk -F ': ' '{print $2}')" = 'Connected' ] ; then
-	# nordvpn
+if [ "$(mullvad status | head -n 1)" = 'Connected' ] ; then
+	# vpn
 	connection_icon="󱚿" # locked wifi icon
 elif [ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ] ; then
 	# ethernet

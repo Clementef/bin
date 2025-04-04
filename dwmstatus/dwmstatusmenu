@@ -3,7 +3,7 @@
 config="$HOME/.config/dwmstatus/config.txt"
 
 # dmenu
-uinp=$(echo -e "\nless\nsystem\nsystem + fan\nnetwork" | dmenu -i -p "Status:")
+uinp=$(echo -e "\nless\nsystem\nsystem + fan\nnetwork\ntemp" | dmenu -i -p "Status:")
 
 # write to config (first line)
 [ -n "$uinp" ] && sed -i "1s/.*/$uinp/" "$config"

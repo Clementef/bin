@@ -1,0 +1,2 @@
+#!/bin/bash
+ssh -i .ssh/ssh-key-oracle-cloud-free-2024-12-28.key opc@129.146.64.234

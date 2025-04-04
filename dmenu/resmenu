@@ -1,0 +1,5 @@
+#!/bin/sh
+
+opttable="1920x1080\n1280x720"
+userin=$(echo -e "\n$opttable" | dmenu -i -d "," -p "Res:")
+[ -n "$userin" ] && xrandr --output LVDS1 --mode "$userin"

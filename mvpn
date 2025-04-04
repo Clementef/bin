@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Check if an argument is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 [connect|c|disconnect|d|status|s]"
+  exit 1
+fi
+
+# Normalize input to lowercase
+case "${1,,}" in
+  connect|c)
+    mullvad connect
+    # echo "Executing connect command..."
+    # Place your connect command here
+    ;;
+  disconnect|d)
+    mullvad disconnect
+    # echo "Executing disconnect command..."
+    # Place your disconnect command here
+    ;;
+  status|s)
+    notify-send "$(mullvad status)"
+    # echo "Executing status command..."
+    # Place your status command here
+    ;;
+  *)
+    echo "Invalid option: $1"
+    echo "Usage: $0 [connect|c|disconnect|d|status|s]"
+    exit 1
+    ;;
+esac
+
