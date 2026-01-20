@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # generate list
-optlist=$(find "$HOME/Downloads/" "$HOME/documents/" -type f | grep ".pdf$")
+optlist=$(fd .\.pdf$ $HOME/downloads/ $HOME/documents/)
 opttable=$(echo -e "\n$optlist" | awk -F"/" '{print substr($NF, 1, 50) "," $0 }')
 
 # dmenu

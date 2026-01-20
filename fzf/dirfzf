@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# temporarily change fzf defaults
+FZF_DEFAULT_COMMAND="fd -H --type d"
+FZF_DEFAULT_OPTS="--preview 'tree -L 2 {}'"
+
+# run fzf with remaining positional args
+fzf "$@"

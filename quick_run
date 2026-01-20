@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# exit if source file not provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <source_file.c>"
+    exit 1
+fi
+
+# get file name without suffix
+basename=$(basename "$1")
+filename="${basename%.*}"
+
+gcc -o "$filename" "$1"
+
+# Check if the compilation was successful
+if [ $? -eq 0 ]; then
+    # Run the compiled program
+    ./"$filename"
+else
+    echo "Compilation failed."
+    exit 1
+fi

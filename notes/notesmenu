@@ -1,8 +1,10 @@
 #!/bin/bash
 
 # generate list
-optlist=$(find "$HOME/documents/notes/" -type f | grep ".md$")
-opttable=$(echo -e  "\n*new note\n$optlist" | awk -F"/" '{print $NF "," $0}')
+# optlist=$(find "$HOME/documents/notes/" -type f | grep ".md$")
+# opttable=$(echo -e  "\n*new note\n$optlist" | awk -F"/" '{print $NF "," $0}')
+optlist=$(fd -tf '.\.(txt|md)$' $HOME/documents)
+opttable=$(echo -e "\n$optlist" | awk -F"/" '{print substr($NF, 1, 50) "," $0 }')
 
 # dmenu
 uinp=$(echo "$opttable" | dmenu -i -d "," -p "Notes:")

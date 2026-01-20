@@ -1,0 +1,42 @@
+#!/bin/sh
+
+HELP_FILE="helpfile.txt"
+SOFTWARE_NAME="shell flag test"
+VERSION="0.1"
+
+while getopts "hvf:" flag; do
+	case $flag in
+		h)
+			cat "$HELP_FILE"
+			;;
+		v)
+			printf "$SOFTWARE_NAME\nversion $VERSION\n"
+			;;
+		f)
+			filename=$OPTARG
+			printf "$OPTARG\n"
+			;;
+		\?)
+			printf "invalid option passed\n"
+			;;
+	esac
+done
+
+# while [ $# -gt 0 ]; do
+#
+# 	case $1 in
+# 		-h | --help)
+# 			echo "help"
+# 			;;
+# 		-v | --verbose)
+# 			echo "verbose"
+# 			;;
+# 		--version)
+# 			echo "version"
+# 			;;
+# 	esac
+#
+# 	# shift positional parameters one to the right
+# 	shift
+#
+# done

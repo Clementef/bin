@@ -1,14 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 
-connection_icon="󰈂" 
-if [ "$(mullvad status | head -n 1)" = 'Connected' ] ; then
-	# vpn
-	connection_icon="󱚿" # locked wifi icon
-elif [ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ] ; then
+connection_icon="x" 
+# if [ "$(mullvad status | head -n 1)" = 'Connected' ] ; then
+# 	# vpn
+# 	connection_icon="l" # tunnel connection
+if [ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ] ; then
 	# ethernet
-	connection_icon="󰈀" # wired icon
+	connection_icon="e" # ethernet icon
 elif [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ] ; then
 	# wifi
-	connection_icon="󰖩" # unlocked wifi icon
+	connection_icon="w" # wifi icon
 fi
 printf "%s\n" "$connection_icon"

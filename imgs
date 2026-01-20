@@ -9,10 +9,5 @@ else
     selected_path="$(pwd)"
 fi
 
-# Run nsxiv with -b (browse) and -a (auto start slideshow) options
-nsxiv -b -a "$selected_path"
-
-# aliases
-# alias py='python'
-# alias pym='python -m'
-# alias imgs='nsxiv -b -a *'
+# Run nsxiv with no bar and animate enabled
+nsxiv --no-bar --animate "$selected_path"

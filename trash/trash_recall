@@ -1,0 +1,11 @@
+#!/bin/sh
+
+TRASH_PATH="$TRASH"
+TRASH_FILES_PATH="$TRASH/files"
+TRASH_INFO_PATH="$TRASH/info"
+
+TRASH_FILES_AVAILABLE="$(ls -A $TRASH_INFO_PATH)"
+# DMENU_TRASH_FILES_LIST="$(echo $TRASH_FILES_AVAILABLE | \
+# 	awk '{ print $1, "\t", $1 }' )"
+# printf "$TRASH_FILES_AVAILABLE\n"
+# printf "$DMENU_TRASH_FILES_LIST"

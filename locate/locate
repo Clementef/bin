@@ -1,0 +1,10 @@
+#!/bin/sh
+
+dbpath="$HOME/.resources/locatedb"
+
+if [ -z "$1" ]; then
+	printf "requires input string"
+	exit 1
+fi
+
+grep "$1" $dbpath

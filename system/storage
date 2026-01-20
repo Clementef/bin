@@ -1,2 +1,2 @@
 #!/bin/sh
-df -h | grep -e "\s/$" | awk '{print $4"/"$2}'
+df -h | grep -e "\s/$" | awk '{print $4"/"$2" available"}'

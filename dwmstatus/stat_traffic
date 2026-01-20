@@ -1,9 +1,7 @@
 #!/bin/sh
 
-# Taken from Luke Smith's voidrice scripts
-# Module showing network traffic. Shows how much data has been received (RX) or
-# transmitted (TX) since the previous time this script ran. So if run every
-# second, gives network traffic per second.
+# using lines from luke smith's dwmblocks scripts
+# https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/statusbar/sb-nettraf
 
 update() {
     sum=0
@@ -20,5 +18,4 @@ update() {
 rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
 tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
 
-printf "%4sB %4sB\\n" $(numfmt --to=iec $rx $tx)
-
+printf "%4s %4s\\n" $(numfmt --to=iec $rx $tx)

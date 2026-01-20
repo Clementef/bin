@@ -4,4 +4,4 @@ opttable=$(echo "$opts" | awk -F"/" '{print $NF "," $0}')
 userin=$(echo -e "\n$opttable" | dmenu -i -d "," -p "Drives:")
 [ -n "$userin" ] \
 	&& notify-send "opening $userin" \
-	&& st -e sh -c "vifm '$userin'; exec bash"
+	&& st -e sh -c "lf '$userin'; exec bash"

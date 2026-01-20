@@ -1,0 +1,11 @@
+#!/bin/sh
+
+useropts="$(pgrep -lu clem | \
+	sed 's/\([^ ]*\) *\(.*\)/\2 \1/')"
+userselection="$(echo -e "\n$useropts" | \
+	dmenu -i -d " " -p "pkill")"
+
+echo "$userselection"
+pkill "$userselection"
+# ./"$userselection" & disown
+

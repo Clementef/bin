@@ -1,0 +1,3 @@
+#!/bin/sh
+# date --date='TZ="America/Los_Angeles" +%a %b %d %Y | %H:%M %Z'
+TZ="America/Los_Angeles" date "+%a %b %d %Y | %I:%M %Z"

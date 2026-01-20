@@ -5,4 +5,5 @@ opttable=$(echo "$opts" | awk -F"/" '{print $NF "," $0}')
 userin=$(echo -e "\n$opttable" | dmenu -i -d "," -p "Unmount:")
 [ -n "$userin" ] \
 	&& notify-send "unmounting $userin" \
-	&& udiskie-umount --detach "$userin"
+	&& udisksctl unmount -p "$userin" \
+	&& udisksctl power-off -p "$userin"

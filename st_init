@@ -9,7 +9,7 @@ first_arg=""
 print_usage() {
 	echo "Usage: $0 [-$flag_char] [command]"
 	echo "Options:"
-	echo "  -$flag_char        Enable the flag"
+	echo "  -$flag_char        open inside a bash instance"
 	echo "  argument  Optional first argument"
 }
 

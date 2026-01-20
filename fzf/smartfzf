@@ -1,0 +1,41 @@
+#!/bin/sh
+
+DEFAULT_PREVIEW="$FZF_DEFAULT_OPTS_CUSTOM"
+DEFAULT_SEARCH="$FZF_DEFAULT_COMMAND"
+FILE_PREVIEW="$DEFAULT_PREVIEW"
+FILE_SEARCH="fd -H --type f"
+DIR_SEARCH="fd -H --type d"
+DIR_PREVIEW="tree -CL 2 {}"
+echo "$FILE_PREVIEW"
+
+user_selection="$(fzf $@ \
+	--bind="ctrl-p:toggle-preview" \
+	--bind="ctrl-f:change-prompt(Files > )" \
+	--bind="ctrl-f:+reload($FILE_SEARCH)" \
+	--bind="ctrl-f:+change-preview($FILE_PREVIEW)" \
+	--bind="ctrl-f:+refresh-preview" \
+	--bind="ctrl-d:change-prompt(Dirs > )" \
+	--bind="ctrl-d:+reload($DIR_SEARCH)" \
+	--bind="ctrl-d:+change-preview($DIR_PREVIEW)" \
+	--bind="ctrl-d:+refresh-preview" \
+	--bind="ctrl-s:change-prompt(> )" \
+	--bind="ctrl-s:+reload($DEFAULT_SEARCH)" \
+	--bind="ctrl-s:+change-preview($DEFAULT_PREVIEW)" \
+	--bind="ctrl-s:+refresh-preview" \
+)"
+
+# exit if no user selection
+[ -z "$user_selection" ] && exit 1
+
+if [ -d "$user_selection" ]; then
+	# if selection is directory
+	# change dir and open lf
+	cd "$user_selection"
+	lf .
+else
+	# if selection is file
+	# change dir and open with xdg
+	cd "$(dirname $user_selection)"
+	xdg-open "$(basename $user_selection)"
+fi
+

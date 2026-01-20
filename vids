@@ -1,25 +1,5 @@
 #!/bin/sh
 
 # Define the list of video file extensions to search for
-extensions="mp4 mkv avi mov flv webm m4v"
-
-# Build the find command with the extensions
-find_cmd="find . -type f \\( "
-for ext in $extensions; do
-    find_cmd+=" -iname '*.$ext' -o"
-done
-find_cmd="${find_cmd::-2} \\) "
-
-# Execute the find command and store results in an array
-files=()
-while IFS= read -r file; do
-    files+=("$file")
-done < <(eval $find_cmd)
-
-# Pass all video files to a single instance of mpv
-if [ "${#files[@]}" -gt 0 ]; then
-    mpv -- "${files[@]}"
-else
-    echo "No video files found."
-fi
-
+VIDEO_FILES="$(ls $PWD | grep -E '\.(mp4|mkv|mov|webm)$')"
+echo "$VIDEO_FILES" | xargs mpv

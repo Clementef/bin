@@ -1,0 +1,21 @@
+#!/bin/sh
+
+TRASH_PATH="$TRASH"
+
+# exit if no target file
+if [ -z "$1" ]; then
+	printf "$(basename $0) requires a target file"
+	exit 1
+fi
+
+# exit if argument is not valid file path
+if ! test -f "$1"; then
+	printf "$1 is not a valid file path"
+	exit 1
+fi
+
+# log file data and move to trash folder
+file_data="$(realpath $1)	$(date +%s)"
+file_name="$(basename $1)"
+echo "$file_data" > "$TRASH_PATH/info/$file_name.trashinfo" \
+	&& mv "$1" "$TRASH_PATH/files"

@@ -1,3 +1,0 @@
-#!/bin/bash
-cpu_fan=$(sensors | grep "^Exhaust" | awk '{print $3}')
-printf "%4s RPM\n" "$cpu_fan"

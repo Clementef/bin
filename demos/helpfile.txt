@@ -1,0 +1,4 @@
+FLAGS:
+	-h	print help info
+	-v	print version info
+	-f	specify input file

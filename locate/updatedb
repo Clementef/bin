@@ -1,0 +1,6 @@
+#!/bin/sh
+
+filepath="$HOME/.resources/locatedb"
+test -f $filepath || touch $filepath
+sudo fd . / > "$filepath"
+

@@ -1,29 +1,6 @@
-#!/bin/bash
-
-config="$HOME/.config/dwmstatus/config.txt"
+#!/bin/sh
 
 while true; do
-	mode=$(head -1 $config)
-	case $mode in
-	    "less")
-		xsetroot -name " | $(stat_network) | $(stat_battery) | $(stat_datetime) | "
-		;;
-	    "system")
-		xsetroot -name " | $(stat_cpu) | $(stat_memory) | $(stat_network) | $(stat_battery) | $(stat_datetime) | "
-		;;
-	    "system + fan")
-        xsetroot -name " | $(stat_fan) | $(stat_cpu) | $(stat_memory) | $(stat_network) | $(stat_battery) | $(stat_datetime) | "
-		;;
-	    "network")
-		xsetroot -name " | $(stat_traffic) | $(stat_network) | $(stat_battery) | $(stat_datetime) | "
-		;;
-	    "temp")
-		xsetroot -name " | $(stat_cpu) | $(stat_network) | $(stat_battery) | $(stat_datetime) | "
-		;;
-	    *)
-		xsetroot -name "error: mode not found"
-		;;
-	esac
-
-	sleep 1
+    xprop -root -set WM_NAME " | $(stat_network) $(stat_traffic) | $(stat_temp) | $(stat_memory) | $(stat_time) "
+    sleep 1
 done
